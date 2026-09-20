@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk"><!-- The Domain layer intentionally has no dependencies. -->
+
+
+  <ItemGroup>
+    <Compile Remove="Common\**" />
+    <Compile Remove="Enums\**" />
+    <Compile Remove="ValueObjects\**" />
+    <EmbeddedResource Remove="Common\**" />
+    <EmbeddedResource Remove="Enums\**" />
+    <EmbeddedResource Remove="ValueObjects\**" />
+    <None Remove="Common\**" />
+    <None Remove="Enums\**" />
+    <None Remove="ValueObjects\**" />
+  </ItemGroup>
+</Project>
