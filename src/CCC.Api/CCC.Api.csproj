@@ -3,6 +3,8 @@
   <PropertyGroup>
     <DisableImplicitNamespaceImports>false</DisableImplicitNamespaceImports>
     <UserSecretsId>b3a1c88e-f8cc-4036-ba9a-9a5d8f46875a</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>

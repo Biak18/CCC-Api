@@ -16,6 +16,7 @@ builder.Services
     .AddInfrastructure(builder.Configuration);
 
 builder.Services.AddOpenApi(options => options.AddBearerSecurityScheme());
+builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
@@ -27,7 +28,8 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
-app.UseHttpsRedirection();
+app.MapHealthChecks("/health"); // use this as Render Health Check Path
+// app.UseHttpsRedirection(); // disabled on Render - proxy terminates TLS, causes redirect loop
 app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();
