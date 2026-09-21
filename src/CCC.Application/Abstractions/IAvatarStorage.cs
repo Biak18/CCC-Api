@@ -1,9 +1,9 @@
 namespace CCC.Application.Abstractions;
 
 /// <summary>
-/// Uploads avatar images and returns a publicly accessible URL.
+/// Uploads avatar images and downloads them back for the proxy endpoint.
 /// Implemented in Infrastructure (Supabase Storage); consumed by the
-/// Avatars vertical slice. Application code only knows "upload file".
+/// Avatars vertical slice. Application code only knows "upload/download file".
 /// </summary>
 public interface IAvatarStorage
 {
@@ -11,5 +11,12 @@ public interface IAvatarStorage
         Stream content,
         string fileName,
         string contentType,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Returns the file bytes, or null when the file does not exist.
+    /// </summary>
+    Task<(byte[] Content, string ContentType)?> DownloadAsync(
+        string fileName,
         CancellationToken cancellationToken = default);
 }
