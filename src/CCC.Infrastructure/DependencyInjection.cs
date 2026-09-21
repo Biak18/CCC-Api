@@ -1,6 +1,7 @@
 
 using CCC.Application.Abstractions;
 using CCC.Infrastructure.Persistence;
+using CCC.Infrastructure.Storage;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,6 +33,8 @@ public static class DependencyInjection
         var supabaseAnonKey = configuration["Supabase:AnonKey"]
      ?? throw new InvalidOperationException("Supabase:AnonKey is required.");
 
+        services.AddHttpClient("supabase-storage");
+        services.AddScoped<IAvatarStorage, SupabaseAvatarStorage>();
 
         // don't need auth for this project
         return services;
